@@ -1,0 +1,406 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Root",
+                "operationId": "root__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customer": {
+            "post": {
+                "summary": "Create Customer",
+                "operationId": "create_customer_customer_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Customer"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customer/{customer_id}": {
+            "get": {
+                "summary": "Read Customer",
+                "operationId": "read_customer_customer__customer_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Customer Id",
+                            "type": "string"
+                        },
+                        "name": "customer_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customer/{customer_id}/invoice": {
+            "get": {
+                "summary": "Get Invoices",
+                "operationId": "get_invoices_customer__customer_id__invoice_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Customer Id",
+                            "type": "string"
+                        },
+                        "name": "customer_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Invoice",
+                "operationId": "create_invoice_customer__customer_id__invoice_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Customer Id",
+                            "type": "string"
+                        },
+                        "name": "customer_id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Invoice"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/invoice/{invnoice_no}": {
+            "get": {
+                "summary": "Read Invoice",
+                "operationId": "read_invoice_invoice__invnoice_no__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Invnoice No",
+                            "type": "integer"
+                        },
+                        "name": "invnoice_no",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/invoice/{invnoice_no}/{stockcode}/": {
+            "get": {
+                "summary": "Read Item",
+                "operationId": "read_item_invoice__invnoice_no___stockcode___get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Invnoice No",
+                            "type": "integer"
+                        },
+                        "name": "invnoice_no",
+                        "in": "path"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Stockcode",
+                            "type": "string"
+                        },
+                        "name": "stockcode",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add Item",
+                "operationId": "add_item_invoice__invnoice_no___stockcode___post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Invnoice No",
+                            "type": "integer"
+                        },
+                        "name": "invnoice_no",
+                        "in": "path"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Stockcode",
+                            "type": "string"
+                        },
+                        "name": "stockcode",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Customer": {
+                "title": "Customer",
+                "required": [
+                    "customer_id",
+                    "country"
+                ],
+                "type": "object",
+                "properties": {
+                    "customer_id": {
+                        "title": "Customer Id",
+                        "type": "string"
+                    },
+                    "country": {
+                        "title": "Country",
+                        "type": "string"
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "Invoice": {
+                "title": "Invoice",
+                "required": [
+                    "invoice_no",
+                    "invoice_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "invoice_no": {
+                        "title": "Invoice No",
+                        "type": "integer"
+                    },
+                    "invoice_date": {
+                        "title": "Invoice Date",
+                        "type": "string"
+                    },
+                    "customer": {
+                        "$ref": "#/components/schemas/URLLink"
+                    }
+                }
+            },
+            "URLLink": {
+                "title": "URLLink",
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "title": "Url",
+                        "type": "string"
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
